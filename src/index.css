@@ -1,0 +1,22 @@
+body{
+    display:flex;
+
+}
+.wrap_movies{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+p{
+    margin: 20px;
+    height: 100px;
+}
+img{
+    height: 300px;
+}
+.movie{
+    width: 250px;
+    height: 400px;
+}
+
