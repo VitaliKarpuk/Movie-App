@@ -2,9 +2,9 @@ import React from 'react'
 export const BtnTitleSearch = (props) =>{
   const titleSearch = (event) => {
     event.preventDefault();
-    props.state.url = `https://reactjs-cdp.herokuapp.com/movies?sortOrder=asc&search=${props.value}&searchBy=title&limit=40`
+    props.state.url = `https://reactjs-cdp.herokuapp.com/movies?sortOrder=asc&search=${props.value}&searchBy=title&limit=20`
 }
      return (
-        <button onClick = {titleSearch}>TITLE</button>
+        <button className = 'titleSearch' onClick = {titleSearch}>TITLE</button>
     )
 }

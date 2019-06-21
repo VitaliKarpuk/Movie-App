@@ -6,7 +6,7 @@ let arrReiting = props.state.map(i => i.vote_count)
     }
         return (
             <>
-            <button onClick = {BtnSortDate}>Sort</button>
+            <button className = 'BtnSort' onClick = {BtnSortDate}>Sort</button>
             {/* <div className = 'wrap'>
             {this.state.films.map(el => {
                  return(

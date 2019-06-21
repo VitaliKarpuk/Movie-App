@@ -9,6 +9,7 @@ export class Form extends React.Component{
         }
       }
     handleChange = event => {
+      event.preventDefault();
         this.setState({
           value: event.target.value
           })
@@ -17,12 +18,13 @@ export class Form extends React.Component{
 render(){
     return(
         <>
-            <form onSubmit =  {this.handleChange}>
+            <form onSubmit =  {this.handleChange} >
                   <h2>Find your movie :  </h2>
                   <input className='input' type="text" value={this.state.value} 
                   onChange={this.handleChange} />
                   <BtnRequest state={this.state.value} handleChange = {this.handleChange}/>
             </form>
+            
             
 
         </>
