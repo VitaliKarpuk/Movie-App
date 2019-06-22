@@ -4,7 +4,7 @@ export const BtnSort = (props) => {
     const BtnSortDate = (value) =>{
         value.preventDefault();
         props.state.films.sort((a,b) => a.vote_count-b.vote_count)
-        console.log(props.staet.films)
+        console.log(props.state)
     }
         return (
             <>
