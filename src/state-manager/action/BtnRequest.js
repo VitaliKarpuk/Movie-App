@@ -21,8 +21,6 @@ export class  BtnRequest extends Component {
             info: e.currentTarget.innerText
         })       
     }
-
-
     loadData = (event) => {
         event.preventDefault();
         fetch(this.state.url)
@@ -33,6 +31,11 @@ export class  BtnRequest extends Component {
         }).catch(() => {
              alert('Ошибка!');
         });
+    }
+    sortFilms = (value) =>{
+        this.setState({
+            films: value
+        }) 
     }
 
     handleClick = () => {
@@ -52,7 +55,7 @@ export class  BtnRequest extends Component {
             <>
             <input type="submit" value="SEARCH" className='BtnSearch'  onClick = {this.loadData}  />
             <div className = 'BtnStates'>
-                <BtnSort state = {this.state.films}/>
+                <BtnSort state = {this.state} sortFilms = {this.sortFilms}/>
                 <BtnTitleSearch state = {this.state} value = {this.props.state}/>
                 <BtnGenresSearch state = {this.state} value = {this.props.state}/>
             </div>

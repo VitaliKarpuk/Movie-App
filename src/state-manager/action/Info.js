@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom';
 import { BtnRequest } from './BtnRequest'
 export  const Info = (props) => {
-    console.log(props)
 const infoArr = props.state.films.filter(function(i) {
     return i.title === props.state.info;
   });
