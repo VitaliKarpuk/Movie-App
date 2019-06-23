@@ -5,7 +5,6 @@ export class Form extends React.Component{
         super(props);
         this.state = {
           value: '',
-
         }
       }
     handleChange = event => {
@@ -14,7 +13,6 @@ export class Form extends React.Component{
           value: event.target.value
           })
     }
-  
 render(){
     return(
         <>
@@ -24,9 +22,6 @@ render(){
                   onChange={this.handleChange} />
                   <BtnRequest state={this.state.value} handleChange = {this.handleChange}/>
             </form>
-            
-            
-
         </>
     )
 }  

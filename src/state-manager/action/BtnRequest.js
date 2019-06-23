@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { BtnSort }  from './BtnSort'
 import { BtnTitleSearch } from './BtnTitleSearch'
 import { BtnGenresSearch } from './BtnGenresSearch'
 import { Route, Link } from 'react-router-dom';
@@ -15,7 +14,6 @@ export class  BtnRequest extends Component {
             url:`https://reactjs-cdp.herokuapp.com/movies?sortOrder=asc&search=${this.props.state}&searchBy=title&limit=20`
         }
     }
-
     BtnInfo = (e) => {   
         this.setState({
             info: e.currentTarget.innerText
@@ -32,30 +30,17 @@ export class  BtnRequest extends Component {
              alert('Ошибка!');
         });
     }
-    sortFilms = (value) =>{
+    BtnSorts = (value) =>{
         this.setState({
-            films: value
-        }) 
+            films: this.state.films.sort((a,b) => a.vote_count - b.vote_count)
+        })
     }
-
-    handleClick = () => {
-    const a = this.state.films.map(el => {
-        return(
-            <div className = 'wrap_info' >
-                <img src ={el.poster_path} state = {this.state.films}/>
-                <p> {el.title}</p>
-                <p> {el.vote_count}</p>
-            </div>
-    )})
-    }
-    
-
     render(){
         return (
             <>
             <input type="submit" value="SEARCH" className='BtnSearch'  onClick = {this.loadData}  />
             <div className = 'BtnStates'>
-                <BtnSort state = {this.state} sortFilms = {this.sortFilms}/>
+                <button className = 'BtnSort' sort = {this.BtnSorts} onClick = {this.BtnSorts}>Sort</button>
                 <BtnTitleSearch state = {this.state} value = {this.props.state}/>
                 <BtnGenresSearch state = {this.state} value = {this.props.state}/>
             </div>
@@ -65,13 +50,13 @@ export class  BtnRequest extends Component {
                         return(
                             <nav>
                                 <Link to = '/info'>
-                            <div className = 'wrap_movies' onClick = {this.BtnInfo} key ={el.id}>
-                                <img src ={el.poster_path} state = {this.state.films} />
-                                <p className = 'title'> {el.title}</p>
-                            </div>
-                            </Link>
+                                    <div className = 'wrap_movies' onClick = {this.BtnInfo} key ={el.id}>
+                                        <img src ={el.poster_path} state = {this.state.films} />
+                                        <p className = 'title'> {el.title}</p>
+                                    </div>
+                                </Link>
                             </nav>
-                    )})
+                        )})
                     }
 
             </div> 
