@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 export  const Info = (props) => {
-const infoArr = props.state.films.filter(function(i) {
-    return i.title === props.state.info;
+    console.log(props)
+const infoArr = props.state.filter(function(i) {
+    return i.title === props.info;
   });
+  console.log(infoArr)
 if(infoArr[0] !== undefined){
         const titleInfo= infoArr[0].title
         const genresInfo = infoArr[0].genres.join(' ')

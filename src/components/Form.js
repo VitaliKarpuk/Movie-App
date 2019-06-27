@@ -1,30 +1,43 @@
-import React from 'react'
-import { BtnRequest } from '../state-manager/action/BtnRequest'
-export class Form extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-          value: '',
-        }
-      }
-    handleChange = event => {
-      event.preventDefault();
-        this.setState({
-          value: event.target.value
-          })
+import React, { useState } from 'react'
+import { BtnSearch } from '../state-manager/action/Request'
+export const Form = () =>{
+  const [value, setValue] = useState('');
+  const [url, setUrl] = useState(``);
+  const BtnTitleSearch = e =>{
+    e.preventDefault();
+    setUrl (`https://reactjs-cdp.herokuapp.com/movies?sortOrder=asc&search=${value}&searchBy=title&limit=20`)
+}
+  const BtnGenresSearch = e =>{
+    e.preventDefault();
+    setUrl (`https://reactjs-cdp.herokuapp.com/movies?search=${value}&searchBy=genres&limit=20`)
+  }
+  const handleChange = e => {
+    e.preventDefault();
+      setValue( e.target.value )
+      setUrl (`https://reactjs-cdp.herokuapp.com/movies?sortOrder=asc&search=${value}&searchBy=title&limit=20`)
     }
-render(){
+    
+    
+
     return(
         <>
-            <form onSubmit =  {this.handleChange} >
-                  <h2>Find your movie :  </h2>
-                  <input className='input' type="text" value={this.state.value} 
-                  onChange={this.handleChange} />
-                  <BtnRequest state={this.state.value} handleChange = {this.handleChange}/>
+            
+            <form onSubmit =  {handleChange} >
+              <div className = 'Find_form'>
+                <h2>Find your movie :  </h2>
+                <div className = 'Btn'>
+                  <input className='input' type="text" value={value} onChange={handleChange} />
+                  <button className = 'titleSearch' onClick = {BtnTitleSearch}>TITLE</button>
+                  <button className = 'genresSearch' onClick = {BtnGenresSearch}>GENRES</button>
+               
+                
+                <BtnSearch  value = {value} url = {url} /></div>
+              </div>
             </form>
+            
         </>
     )
 }  
-}
+
 
 
